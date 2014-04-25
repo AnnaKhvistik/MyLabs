@@ -1,0 +1,44 @@
+#include<iostream>
+using namespace std;
+int main()
+{
+	int num;
+	cin >> num;
+	if(num <= 0) 
+	{
+		cout <<"Enter natural number" << endl;
+		exit(1);
+	}
+	int sum = 0;
+	int result = 0;
+	int a = 2;
+
+	_asm
+	{
+		mov eax, num
+			mov edx, 0
+			div a
+			mov ebx, sum
+			mov ecx, eax 
+beg:
+		mov eax, num
+			mov edx, 0
+			div ecx 
+			cmp edx, 0 
+			JNE not_eq 
+			add ebx, ecx 
+not_eq: 
+		;
+		loop beg 
+			cmp ebx, num
+			JNE noteq1
+			mov result, 1
+noteq1:
+		;
+	}
+
+	if(result == 1) cout << "true" << endl;
+	else cout << "false" << endl;
+	return 0;
+
+}

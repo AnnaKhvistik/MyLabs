@@ -22,3 +22,12 @@ Thumbs.db
 *.dll
 *.lib
 *.sbr
+09_task/09_task/Debug/rc.write.1.tlog
+09_task/09_task/Debug/vc100.idb
+09_task/09_task/Debug/rc.read.1.tlog
+*.tlog
+*.rc
+09_task/09_task/Debug/09_task.exe.intermediate.manifest
+09_task/09_task/Debug/09_task.lastbuildstate
+09_task/09_task/Debug/09_task.exe.embed.manifest.res
+09_task/09_task/Debug/09_task.exe.embed.manifest
