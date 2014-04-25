@@ -31,9 +31,9 @@ not_eq:
 		;
 		loop beg 
 			cmp ebx, num
-			JNE noteq1
+			JNE not_eq1
 			mov result, 1
-noteq1:
+not_eq1:
 		;
 	}
 
