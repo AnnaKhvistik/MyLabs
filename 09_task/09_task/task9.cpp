@@ -18,6 +18,8 @@ int main()
 		mov eax, num
 			mov edx, 0
 			div a
+			cmp eax, 0
+			JE eq_
 			mov ebx, sum
 			mov ecx, eax 
 beg:
@@ -34,6 +36,8 @@ not_eq:
 			JNE not_eq1
 			mov result, 1
 not_eq1:
+		;
+eq_:
 		;
 	}
 
