@@ -14,35 +14,16 @@ cin >> x ;
 cout <<"Enter a:" << endl;
 cin >> a;
 
-double multiplier, divider, multiplier1;
-int nplus1;
+double multiplier, multiplier1;
+int fact = 1;
 double result;
-int fact;
 int counter;
 _asm
-{
-	
-	
+{	
 		fld x
 		fadd a
 		fst multiplier 
 		fstp multiplier1 
-		mov ebx, n
-		add ebx, 1
-		mov nplus1, ebx
-		mov ecx, 1
-		mov eax, 1
-beg_:
-	cmp ecx, ebx
-		JG end_
-		mul ecx
-		inc ecx
-		jmp beg_
-end_:
-	mov fact, eax
-
-		fild fact
-		fstp divider
 
 		fld1
 		
@@ -54,15 +35,15 @@ beg:
 	cmp ecx, eax
 		JG finish
 		fmul multiplier 
-		fdiv divider
+		fidiv fact
 
+		fild fact
 		mov counter, ecx
 		fild counter
-		fild nplus1
+		fld1
 		faddp st(1), st(0)
-		fld divider
 		fmulp st(1), st(0)
-		fstp divider
+		fistp fact
 
 		fld multiplier
 		fmul multiplier1
@@ -75,5 +56,6 @@ finish:
 	}
 
 cout << result;
+return 0;
 
 }
