@@ -1,12 +1,31 @@
 #include<iostream>
 using namespace std;
+
+int len (char *str)
+{
+	int l=0;
+	__asm
+	{
+		cld
+			mov edi, str
+			mov esi, edi
+			mov ecx, 0ffffffffh
+			xor al, al
+			repne scasb
+			sub edi, esi
+			dec edi
+			mov l, edi
+	}
+	return l;
+}
 int main()
 {
 	char str1[100], str2[100], result[100] = "";
 	fgets(str1, 100, stdin);
 	fgets(str2, 100, stdin);
-	int len1 = strlen(str1);
-	int len2 = strlen(str2);
+	int len1 = len(str1);
+	int len2 = len(str2);
+
 
 
 	_asm
