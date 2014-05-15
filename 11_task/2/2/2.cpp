@@ -32,9 +32,28 @@ beg:
 			mov edx, [ebx][eax * 4]
 			cmp edx, num
 				jg met
+
+				cmp edx, num
+				je eq_
+
+eq_:
+			mov ecx, eax
+				dec ecx
+				mov edx, [ebx][ecx * 4]
+				cmp edx, num
+				je few
+				;
+
+
 				mov esi, eax
 				inc esi
 				jmp beg
+
+few:
+				mov edi, eax
+				dec eax
+				jmp eq_
+					;
 met:
 			mov edi, eax
 				jmp beg
