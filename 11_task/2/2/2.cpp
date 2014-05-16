@@ -10,6 +10,7 @@ int main()
 	int *arr = new int[n];
 	for(int i = 0; i < n; i++)
 		cin >> arr[i];
+	
 	cout << "Enter the number: " << endl;
 	int num;
 	cin >> num;
@@ -51,8 +52,8 @@ eq_:
 
 few:
 				mov edi, eax
-				dec eax
-				jmp eq_
+				dec edi
+				jmp beg
 					;
 met:
 			mov edi, eax
