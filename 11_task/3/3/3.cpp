@@ -1,4 +1,4 @@
-#include <iostream>
+п»ї#include <iostream>
 using namespace std;
 void print(int *M, int n, int m)
 {
@@ -12,30 +12,30 @@ void print(int *M, int n, int m)
 }
 int main()
 {
-	int M[3][4] = {{100,2,33,4},{5,6000,77,8},{900,10,11,1200}};
-	int n=3, m=4;
+	int M[2][2] = {{100,2},{5,600}};
+	int n=2, m=2;
 
 	print(&M[0][0], n, m);
 
-	__asm 
-	{ 
-		   mov eax,n
-			   mul m  
-			   mov ecx,eax  ; количество элементов массива 
-			   xor esi,esi  ; индекс 
-begin_: 
-		   cmp esi, ecx
-			   jge finish
-			   mov edx, M[esi*4]
-		  not edx
-			  
-			  mov M[esi*4], edx
-		   inc esi
-		
-		jmp begin_
-finish:
-		   ;
-	} 
+	int mSize=m*sizeof(int);  
+	__asm
+	{   lea ebx,M ;   
+		mov ecx,n ; 
+begin_n:
+	push  ecx ; 
+		mov ecx,m ; 
+		xor esi,esi ; 
+begin_m:   
+	mov edx, [ebx][esi*4]
+	not edx
+		mov [ebx][esi*4], edx
+		inc esi 
+		loop begin_m
+		add ebx,mSize 
+		pop ecx 
+		loop begin_n 
+	}
+
 
 	cout << endl;
 	print(&M[0][0], n, m);
